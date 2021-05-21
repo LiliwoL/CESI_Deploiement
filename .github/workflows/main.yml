@@ -36,4 +36,4 @@ jobs:
           SSH_HOST: ${{ secrets.STAGING_SSH_HOST }}
 
       - name: Pull les dernières versions de DEV
-        run: ssh staging 'cd DEV && git fetch && git pull'
+        run: ssh staging 'cd web/formateur.liliwol.fr/public_html/DEV && git fetch && git pull'
