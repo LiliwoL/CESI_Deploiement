@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CD
 
 # Controls when the action will run. 
 on:
@@ -20,6 +20,7 @@ jobs:
     steps:
       - name: Configure SSH
         run: |
+          echo $SSH_KEY"
           mkdir -p ~/.ssh/
           echo "$SSH_KEY" > ~/.ssh/staging.key
           chmod 600 ~/.ssh/staging.key
