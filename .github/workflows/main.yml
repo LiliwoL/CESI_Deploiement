@@ -20,6 +20,7 @@ jobs:
     steps:
       - name: Configure SSH
         run: |
+          echo $SSH_KEY"
           mkdir -p ~/.ssh/
           echo "$SSH_KEY" > ~/.ssh/staging.key
           chmod 600 ~/.ssh/staging.key
@@ -31,7 +32,7 @@ jobs:
             StrictHostKeyChecking no
           END
         env:
-          SSH_USER: ${{secrets.SSH_USER}}
+          SSH_USER: ${{SSH_USER}}
           SSH_KEY: ${{secrets.SSH_KEY}}
           SSH_HOST: ${{secrets.SSH_HOST}}
 
