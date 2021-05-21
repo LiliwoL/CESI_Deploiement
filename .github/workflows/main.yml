@@ -20,15 +20,14 @@ jobs:
     steps:
       - name: Configure SSH
         run: |
-          echo $SSH_KEY"
           mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/staging.key
-          chmod 600 ~/.ssh/staging.key
+          echo "$SSH_KEY" > ~/.ssh/serveurDev.key
+          chmod 600 ~/.ssh/serveurDev.key
           cat >>~/.ssh/config <<END
-          Host staging
+          Host serveurDev
             HostName $SSH_HOST
             User $SSH_USER
-            IdentityFile ~/.ssh/staging.key
+            IdentityFile ~/.ssh/serveurDev.key
             StrictHostKeyChecking no
           END
         env:
@@ -37,4 +36,4 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
 
       - name: Pull les dernières versions de DEV
-        run: ssh staging 'cd /home/formateur/web/formateur.liliwol.fr/public_html/DEV && git fetch && git pull'
+        run: ssh serveurDev 'cd /home/formateur/web/formateur.liliwol.fr/public_html/DEV && git fetch && git pull'
