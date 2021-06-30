@@ -1,10 +1,9 @@
 # Workflow pour un déploiement sur un serveur de PROD
-
 name: DeploiementServeurProd
 
 # Evenement qui va déclencher ce script
 # Lors d'un événement manuel
-on: workflow_dispatch
+on: [workflow_dispatch]
 	  
 # Liste de JOBS exécutés séquentiellement ou en parallèle
 jobs:
